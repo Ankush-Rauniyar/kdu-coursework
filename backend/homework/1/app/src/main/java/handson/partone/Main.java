@@ -20,6 +20,7 @@ public class Main {
             System.out.println("Enter the entries :");
             int no_of_entries = sc.nextInt();
 
+
             for(int i = 0 ; i < no_of_entries ; i++){
                 int id = sc.nextInt();
                 sc.nextLine();
