@@ -16,9 +16,9 @@ public class StudentRepository {
 
     public Student retreiveStudent(int id){
         loggersDefined.loggingStoringing("retrieving  student");
-        int total_students = students.size();
-        for(int i = 0 ; i < total_students ; i++){
-            if(students.get(i).student_id == id){
+        int totalStudents = students.size();
+        for(int i = 0 ; i < totalStudents ; i++){
+            if(students.get(i).studentId == id){
                 return students.get(i);
             }
         }
@@ -26,17 +26,17 @@ public class StudentRepository {
         return null;
     }
 
-    public void updateStudent(int id,Student new_student_details){
+    public void updateStudent(int id,Student newStudentDetails){
         loggersDefined.loggingStoringing("Updating student");
-        int total_students = students.size();
+        int totalStudents = students.size();
         int current = -1;
-        for(int i = 0 ; i < total_students ; i++){
-            if(students.get(i).student_id == id){
+        for(int i = 0 ; i < totalStudents ; i++){
+            if(students.get(i).studentId == id){
                 current = i;
                 break;
             }
         }
-        students.set(current,new_student_details);
+        students.set(current,newStudentDetails);
         loggersDefined.loggingStoringing("student -- update");
     }
 }
