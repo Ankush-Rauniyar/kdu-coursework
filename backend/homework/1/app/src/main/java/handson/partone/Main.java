@@ -13,6 +13,7 @@ public class Main {
 
         StudentRepository student_repository = new StudentRepository();
         Scanner sc = new Scanner(System.in);
+        System.out.println("Hello");
 
         int choice = sc.nextInt();
 
