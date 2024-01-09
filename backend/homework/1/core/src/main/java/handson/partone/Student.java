@@ -2,39 +2,39 @@ package handson.partone;
 
 import java.util.*;
 public class Student {
-    int studentId;
-    String studentName;
-    int studentAge;
-    char studentGrade;
+    int student_id;
+    String student_name;
+    int student_age;
+    char student_grade;
 
     public Student(int id,String name,int age,char grade){
-        this.studentId = id;
-        this.studentName = name;
-        this.studentAge = age;
-        this.studentGrade = grade;
+        this.student_id = id;
+        this.student_name = name;
+        this.student_age = age;
+        this.student_grade = grade;
     }
 
     public void setStudent(int id,String name,int age,char grade){
-        this.studentId = id;
-        this.studentName = name;
-        this.studentAge = age;
-        this.studentGrade = grade;
+        this.student_id = id;
+        this.student_name = name;
+        this.student_age = age;
+        this.student_grade = grade;
     }
 
     public int getStudentid(){
-        return this.studentId;
+        return this.student_id;
     }
 
     public String getStudentName(){
-        return this.studentName;
+        return this.student_name;
     }
 
     public byte getStudentAge(){
-        return (byte) this.studentAge;
+        return (byte) this.student_age;
     }
 
     public char getStudentGrade(){
-        return this.studentGrade;
+        return this.student_grade;
     }
 
 
