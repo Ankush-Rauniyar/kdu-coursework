@@ -13,13 +13,12 @@ public class Main {
 
         StudentRepository student_repository = new StudentRepository();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Hello");
 
         int choice = sc.nextInt();
 
         if(choice == 1) {
-            int no_of_entries = sc.nextInt();
             System.out.println("Enter the entries :");
+            int no_of_entries = sc.nextInt();
 
             for(int i = 0 ; i < no_of_entries ; i++){
                 int id = sc.nextInt();
