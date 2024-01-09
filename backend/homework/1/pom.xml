@@ -8,6 +8,18 @@
     <artifactId>PartOneHandson</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>3.10.0.2594</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
     <modules>
         <module>core</module>
         <module>data</module>
