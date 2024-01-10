@@ -82,7 +82,8 @@ public class SentimentAnalyzer {
         }
         return opinion;
     }
-    private static final Logger logger = (Logger) LoggerFactory.getLogger(SentimentAnalyzer.class);
+    private static final Logger logger = LoggerFactory.getLogger(SentimentAnalyzer.class);
+
 
     public static void main(String[] args) {
 
@@ -115,6 +116,8 @@ public class SentimentAnalyzer {
         logger.info("ended the program");
 
 
-        System.out.println("Opinions on Features: " + Arrays.toString(featureOpinions));
+        //System.out.println("Opinions on Features: " + Arrays.toString(featureOpinions));
+
+        //turned of system.out.println
     }
 }

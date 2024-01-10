@@ -4,7 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Book {
-    private final static Logger logger = (Logger) LoggerFactory.getLogger(Book.class);
+    private final static Logger logger = LoggerFactory.getLogger(Book.class);
+
+
     private String title;
     private String author;
     private int publicationYear;
@@ -23,6 +25,7 @@ public class Book {
         logger.info("get publication Year executed");
         return publicationYear;
     }
+
     public void setPublicationYear(int publicationYear) {
         this.publicationYear = publicationYear;
     }
@@ -31,6 +34,7 @@ public class Book {
         logger.info("get Image Url executed");
         return imageUrl;
     }
+
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
@@ -48,13 +52,16 @@ public class Book {
         this.ratingsCount = ratings;
     }
 
+
     public int getRatings(){
         logger.info("get Ratings Count executed");
         return this.ratingsCount;
     }
 
     public void setAverageRating(double averageRating){
+
         this.averageRating = averageRating;
+
     }
 
     public double getAverageRating(){

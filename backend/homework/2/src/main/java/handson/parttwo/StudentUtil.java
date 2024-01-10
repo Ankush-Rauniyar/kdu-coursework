@@ -3,9 +3,14 @@ package handson.parttwo;
 import QuestionTwo.SentimentAnalyzer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.util.Array;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
+
+
+
+
 import java.util.Scanner;
 
 public class StudentUtil {
@@ -58,7 +63,9 @@ public class StudentUtil {
         return result;
     }
 
-    private static final Logger logger = (Logger) LoggerFactory.getLogger(SentimentAnalyzer.class);
+    private static final Logger logger = LoggerFactory.getLogger(SentimentAnalyzer.class);
+
+
 
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
@@ -84,7 +91,8 @@ public class StudentUtil {
         }
 
         int[] output = getStudentsByGPA(lower,upper,studentIdList,studentsGrades);
-        logger.info("final student id list of valid GPA found");
-        //System.out.println(Arrays.toString(output));
+
+        logger.info("final student id list of valid GPA found" + Arrays.toString(output));
+
     }
 }
