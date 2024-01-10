@@ -1,5 +1,9 @@
 package handson.parttwo;
 
+import QuestionTwo.SentimentAnalyzer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -54,14 +58,16 @@ public class StudentUtil {
         return result;
     }
 
+    private static final Logger logger = (Logger) LoggerFactory.getLogger(SentimentAnalyzer.class);
+
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Enter lower bound :");
+        logger.info("Enter lower bound :");
         double lower = sc.nextDouble();
-        System.out.println("Enter lower bound :");
+        logger.info("Enter higher bound :");
         double upper =sc.nextDouble();
-        System.out.println("enter the number of students");
+        logger.info("enter the number of students");
         int n = sc.nextInt();
 
         int[] studentIdList = new int[n];
@@ -78,6 +84,7 @@ public class StudentUtil {
         }
 
         int[] output = getStudentsByGPA(lower,upper,studentIdList,studentsGrades);
-        System.out.println(Arrays.toString(output));
+        logger.info("final student id list of valid GPA found");
+        //System.out.println(Arrays.toString(output));
     }
 }

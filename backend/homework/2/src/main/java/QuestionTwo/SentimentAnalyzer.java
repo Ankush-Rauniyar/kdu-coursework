@@ -89,7 +89,7 @@ public class SentimentAnalyzer {
 
         logger.info("initated the program");
 
-        String review = "Haven't great ice cream been here in years! Fantastic service and the food was delicious! Definetly will be a frequent flyer! Francisco was very attentive";
+        String review = "Haven't bad ice cream been here in years! amazing service and the food was delicious! Definetly will be a frequent flyer! Francisco was very attentive";
         //String review = "Sorry OG, but you just lost some loyal
 //        customers. Horrible service, no smile or greeting just attitude. The
 //        breadsticks were stale and burnt, appetizer was cold and the food came
@@ -115,6 +115,6 @@ public class SentimentAnalyzer {
         logger.info("ended the program");
 
 
-//        System.out.println("Opinions on Features: " + Arrays.toString(featureOpinions));
+        System.out.println("Opinions on Features: " + Arrays.toString(featureOpinions));
     }
 }
