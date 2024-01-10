@@ -3,7 +3,7 @@ package handson.parttwo;
 import QuestionTwo.SentimentAnalyzer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import java.util.Array;
+import java.util.Arrays;
 
 import java.util.ArrayList;
 
