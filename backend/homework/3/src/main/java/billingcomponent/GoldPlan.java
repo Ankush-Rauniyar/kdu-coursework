@@ -1,4 +1,4 @@
-package billingComponent;
+package billingcomponent;
 
 public class GoldPlan extends HealthInsurancePlan{
     public GoldPlan(){

@@ -1,6 +1,5 @@
 package handson.partthree;
 
-import billingComponent.HealthInsurancePlan;
 
 public class Patient extends User {
     private long patientId;

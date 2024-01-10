@@ -1,4 +1,4 @@
-package billingComponent;
+package billingcomponent;
 
 public abstract class HealthInsurancePlan {
     private double coverage;

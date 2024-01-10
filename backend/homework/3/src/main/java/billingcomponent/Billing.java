@@ -1,8 +1,12 @@
-package billingComponent;
+package billingcomponent;
 
 import handson.partthree.Patient;
 
 public class Billing {
+
+    private Billing(){
+
+    }
     public static double[] computePaymentAmount(Patient patient,double amount){
         HealthInsurancePlan healthInsurancePlan = patient.getInsurancePlan();
         double[] answer = new double[2];

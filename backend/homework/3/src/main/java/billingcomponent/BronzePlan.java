@@ -1,4 +1,4 @@
-package billingComponent;
+package billingcomponent;
 
 public class BronzePlan extends HealthInsurancePlan{
     public BronzePlan(){

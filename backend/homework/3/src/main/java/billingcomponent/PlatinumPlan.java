@@ -1,4 +1,4 @@
-package billingComponent;
+package billingcomponent;
 
 public class PlatinumPlan extends HealthInsurancePlan{
 

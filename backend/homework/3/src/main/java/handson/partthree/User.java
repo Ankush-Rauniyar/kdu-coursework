@@ -1,6 +1,6 @@
 package handson.partthree;
 
-import billingComponent.HealthInsurancePlan;
+import billingcomponent.HealthInsurancePlan;
 
 public class User {
     private int id;
