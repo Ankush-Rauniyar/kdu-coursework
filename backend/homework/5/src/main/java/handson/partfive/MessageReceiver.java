@@ -17,7 +17,8 @@ public class MessageReceiver extends Thread{
                 processingLogs.displayLogs("Received message in Receiver " + Thread.currentThread().getId() + ": " + message);
             }
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            new ProcessingLogs().displayLogs("Interrupted Exception");
+            Thread.currentThread().interrupt();
         }
     }
 }
