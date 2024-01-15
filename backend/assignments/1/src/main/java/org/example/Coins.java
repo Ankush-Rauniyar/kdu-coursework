@@ -8,6 +8,13 @@ public class Coins {
     private double price;
     private long volume;
 
+    public Coins(int rank,String name,String symbol,double price,long volume){
+        this.rank = rank;
+        this.name = name;
+        this.symbol = symbol;
+        this.price = price;
+        this.volume = volume;
+    }
     public double getPrice() {
         return price;
     }

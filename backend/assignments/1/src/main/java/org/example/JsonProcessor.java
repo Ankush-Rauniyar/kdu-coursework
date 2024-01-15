@@ -10,12 +10,11 @@ import java.io.IOException;
 
 public class JsonProcessor {
     private static final Logger logger = LoggerFactory.getLogger(JsonProcessor.class);
-    public static JsonNode convertJson(){
-        String filePath = "src/main/resources/large_transaction.json";
+    public static JsonNode convertJson(String path){
         // Read and parse the JSON file
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            return objectMapper.readTree(new File(filePath));
+            return objectMapper.readTree(new File(path));
 
 
         } catch (IOException e) {

@@ -6,13 +6,13 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class CsvReader {
-    public static HashMap<String,Trader> readTraderCsv(){
+    public static HashMap<String,Trader> readTraderCsv(String path){
         HashMap<String, Trader> tradersMap = new HashMap<>();
 
         // Path to your CSV file
-        String csvFilePath = "src/main/resources/traders.csv";
 
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
+
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             // Skip the header line if it exists
             String line = br.readLine();
 
@@ -44,9 +44,8 @@ public class CsvReader {
         return tradersMap;
     }
 
-    public static HashMap<String, Coins> coinReaderCsv(){
+    public static HashMap<String, Coins> coinReaderCsv(String csvFilePath){
 
-        String csvFilePath = "src/main/resources/coins.csv";
         HashMap<String, Coins> cryptoMap = new HashMap<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
@@ -67,12 +66,8 @@ public class CsvReader {
                 long circulatingSupply = Long.parseLong(fields[5].trim());
 
                 // Create a Crypto object
-                Coins coins = new Coins();
-                coins.setName(name);
-                coins.setPrice(price);
-                coins.setRank(rank);
-                coins.setSymbol(symbol);
-                coins.setVolume(circulatingSupply);
+                Coins coins = new Coins(rank,name,symbol,price,circulatingSupply);
+
 
                 cryptoMap.put(symbol, coins);
 

@@ -25,12 +25,12 @@ public class ExecuteTransaction  implements Runnable{
         this.jsonNode = jsonNode;
 
     }
-    public synchronized void setHashMapTraders(){
-        hashMapTraders = CsvReader.readTraderCsv();
+    public synchronized void setHashMapTraders(HashMap<String,Trader> traderHashMap){
+        this.hashMapTraders = traderHashMap;
     }
 
-    public synchronized void setHashMapCoins(){
-        hashMapCoins = CsvReader.coinReaderCsv();
+    public synchronized void setHashMapCoins(HashMap<String,Coins> coinsHashMap){
+        this.hashMapCoins = coinsHashMap;
     }
 
     public synchronized HashMap<String,Trader> getHashMapTraders(){
@@ -45,16 +45,10 @@ public class ExecuteTransaction  implements Runnable{
         return jsonNode;
     }
 
-    public void startReading(){
-        setHashMapTraders();
-        setHashMapCoins();
-        logger.info("coins csv read----- success \n");
-        logger.info("traders csv read----- success \n");
-    }
 
     public void run(){
         logger.info("initating transaction");
-//        String sample = getBlockHash();
+//sta
         JsonNode transaction = this.getJsonNode();
         String type = transaction.get("type").asText();
         JsonNode data = transaction.get("data");

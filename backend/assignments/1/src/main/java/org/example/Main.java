@@ -14,7 +14,6 @@ import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 public class Main {
-
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
     public static void executeTransactions(JsonNode jsonTransactions, CountDownLatch latch){
         ExecuteTransaction.countDownLatch = latch;
@@ -28,12 +27,22 @@ public class Main {
 
     }
 
+
     public static void main(String[] args){
         ExecuteTransaction executeTransaction = new ExecuteTransaction(null);
-        executeTransaction.startReading();
+        String csvFilePath = "src/main/resources/traders.csv";
+        HashMap<String,Trader> trades = startReadingTrader(csvFilePath);
+
+        executeTransaction.setHashMapTraders(trades);
+        String csvFilePath2 = "src/main/resources/coins.csv";
+
+        HashMap<String,Coins> coins = startReadingCoin(csvFilePath2);
+
+        executeTransaction.setHashMapCoins(coins);
 
 
-        JsonNode jsonNodeTransactions = JsonProcessor.convertJson();
+        String filePath = "src/main/resources/small_transaction.json";
+        JsonNode jsonNodeTransactions = JsonProcessor.convertJson(filePath);
         if(jsonNodeTransactions == null){
             logger.info("could not read json file");
         }else{
@@ -83,6 +92,8 @@ public class Main {
                 showPortfolioStatus(wallet, traderHashMap);
             } else if (options == 5) {
                 showTopBottom(traderHashMap);
+            }else if(options == 6){
+                break;
             }
         }
     }
@@ -149,5 +160,12 @@ public class Main {
         logger.info("Price: {}",current.getPrice());
         logger.info("Circulating Supply: {}",current.getVolume());
         logger.info("-----------------------");
+    }
+
+    public static HashMap<String,Trader> startReadingTrader(String path){
+        return CsvReader.readTraderCsv(path);
+    }
+    public static HashMap<String,Coins> startReadingCoin(String path){
+        return CsvReader.coinReaderCsv(path);
     }
 }
