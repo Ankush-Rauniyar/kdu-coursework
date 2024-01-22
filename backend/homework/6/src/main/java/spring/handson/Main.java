@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext vehicleContext = new AnnotationConfigApplicationContext(VehicleService.class);
         List<Vehicle> vehicles = vehicleContext.getBean(List.class);
-        Vehicle current = null;
+        Vehicle current = new Vehicle();
         int currentprice = 0;
         for(Vehicle vehicle : vehicles){
             if(vehicle.getPrice() > currentprice){
