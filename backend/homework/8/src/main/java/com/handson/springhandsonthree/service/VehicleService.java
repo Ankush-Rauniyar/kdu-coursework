@@ -18,8 +18,7 @@ public class VehicleService implements VehicleGenericService {
         if (vehicle == null) {
             return null;
         }
-        VehicleDto vehicleDto = Mapper.convertToDto(vehicle);
-        return vehicleDto;
+        return Mapper.convertToDto(vehicle);
     }
 
     @Override
@@ -43,7 +42,7 @@ public class VehicleService implements VehicleGenericService {
     }
 
     public VehicleDto findVehicleExpense(String condition){
-        VehicleDto vehicleDto = Mapper.convertToDto(vehicleRepository.findRequired(condition));
-        return vehicleDto;
+        return Mapper.convertToDto(vehicleRepository.findRequired(condition));
+
     }
 }

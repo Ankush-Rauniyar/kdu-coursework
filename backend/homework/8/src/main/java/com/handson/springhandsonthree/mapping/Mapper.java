@@ -5,6 +5,9 @@ import com.handson.springhandsonthree.entity.Vehicle;
 
 
 public class Mapper {
+    private Mapper() {
+    }
+
     public static VehicleDto convertToDto(Vehicle vehicle){
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setId(vehicle.getId());
@@ -22,5 +25,9 @@ public class Mapper {
         vehicle.setModel(vehicleDto.getModel());
         vehicle.setPrice(vehicleDto.getPrice());
         return vehicle;
+    }
+
+    public static Mapper createMapper() {
+        return new Mapper();
     }
 }

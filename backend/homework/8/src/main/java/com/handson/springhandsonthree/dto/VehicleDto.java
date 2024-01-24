@@ -1,6 +1,5 @@
 package com.handson.springhandsonthree.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
