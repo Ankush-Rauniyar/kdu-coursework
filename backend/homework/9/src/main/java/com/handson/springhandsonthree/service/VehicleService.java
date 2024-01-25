@@ -12,16 +12,31 @@ import com.handson.springhandsonthree.repository.VehicleRepository;
 public class VehicleService implements VehicleGenericService {
     private VehicleRepository vehicleRepository;
 
+    /**
+     *
+     * @param vehicleRepository
+     */
     @Autowired
     public VehicleService(VehicleRepository vehicleRepository){
         this.vehicleRepository = vehicleRepository;
     }
+
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public ResponseDto accessVehicle(int id){
         Vehicle vehicle = vehicleRepository.getVehicle(id);
         return Mapper.convertToResponse(vehicle);
     }
 
+    /**
+     *
+     * @param vehicleDto
+     * @return
+     */
     @Override
     public ResponseDto createVehicle(VehicleDto vehicleDto) {
         Vehicle vehicle = Mapper.convertToVehicle(vehicleDto);
@@ -29,12 +44,22 @@ public class VehicleService implements VehicleGenericService {
         return Mapper.convertToResponse(current);
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public ResponseDto removeVehicle(int id) {
         Vehicle vehicle = vehicleRepository.deleteVehicle(id);
         return Mapper.convertToResponse(vehicle);
     }
 
+    /**
+     *
+     * @param vehicleDto
+     * @return
+     */
     @Override
     public ResponseDto upgradeVehicle(VehicleDto vehicleDto){
         Vehicle current = Mapper.convertToVehicle(vehicleDto);
@@ -42,6 +67,11 @@ public class VehicleService implements VehicleGenericService {
         return Mapper.convertToResponse(vehicle);
     }
 
+    /**
+     *
+     * @param condition
+     * @return
+     */
     public ResponseDto findVehicleExpense(String condition){
         return Mapper.convertToResponse(vehicleRepository.findRequired(condition));
     }

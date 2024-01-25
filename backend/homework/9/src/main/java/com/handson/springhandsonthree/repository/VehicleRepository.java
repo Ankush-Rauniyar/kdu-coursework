@@ -16,6 +16,11 @@ public class VehicleRepository {
     private  ArrayList<Vehicle> allVehicles = new ArrayList<>();
     private Logger logger = LoggerFactory.getLogger(VehicleRepository.class);
 
+    /**
+     *
+     * @param vehicle
+     * @return
+     */
     public  Vehicle addVehicle(Vehicle vehicle){
         int size = allVehicles.size();
             allVehicles.add(vehicle);
@@ -28,6 +33,12 @@ public class VehicleRepository {
 
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws VehicleNotFoundException
+     */
     public  Vehicle getVehicle(int id) throws VehicleNotFoundException{
         for(Vehicle vehicle : allVehicles){
             if(vehicle.getId() == id){
@@ -39,6 +50,12 @@ public class VehicleRepository {
         throw new VehicleNotFoundException(id);
     }
 
+    /**
+     *
+     * @param index
+     * @param vehicle
+     * @return
+     */
     public  Vehicle updateVehicle(int index, Vehicle vehicle){
         if(index < 0 || index >= allVehicles.size()){
             logger.error("Could not access the index : {}",index);
@@ -52,6 +69,11 @@ public class VehicleRepository {
         return vehicle;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public  Vehicle deleteVehicle(int id){
         for(Vehicle v : allVehicles){
             if(v.getId() == id){
@@ -64,6 +86,11 @@ public class VehicleRepository {
         throw new BadOperationRequestException("deleting a vehicle");
     }
 
+    /**
+     *
+     * @param condition
+     * @return
+     */
     public Vehicle findRequired(String condition) {
         if ("maximum".equals(condition)) {
             logger.info("successfully retrieved most expensive vehicle.");
@@ -77,6 +104,12 @@ public class VehicleRepository {
         }
     }
 
+    /**
+     *
+     * @param comparator
+     * @param findMax
+     * @return
+     */
     private Vehicle findVehicleWithExtremePrice(Comparator<Vehicle> comparator, boolean findMax) {
         Optional<Vehicle> result = findMax ? allVehicles.stream().max(comparator) : allVehicles.stream().min(comparator);
         return result.orElseThrow(() -> new BadOperationRequestException("No vehicles found during query operation"));

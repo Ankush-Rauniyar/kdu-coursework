@@ -11,6 +11,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+
+    /**
+     *
+     * @param vehicleNotFoundException
+     * @return
+     */
     @ExceptionHandler(value = VehicleNotFoundException.class)
     public ResponseEntity<ErrorDto> handleException(VehicleNotFoundException vehicleNotFoundException){
         logger.error(vehicleNotFoundException.getMsg());
@@ -18,6 +24,11 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorDto,HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    /**
+     *
+     * @param badRequestException
+     * @return
+     */
     @ExceptionHandler(value = BadOperationRequestException.class)
     public ResponseEntity<ErrorDto> handleBadRequestException(BadOperationRequestException badRequestException){
         logger.error("Bad request on operation : {}",badRequestException.getOperation());
@@ -26,6 +37,11 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorDto,HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    /**
+     *
+     * @param e
+     * @return
+     */
     @ExceptionHandler(value = Exception.class)
     public ResponseEntity<ErrorDto> handleGenericException(Exception e){
         logger.error("Runtime Exception encountered :{}",e.getMessage());

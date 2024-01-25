@@ -18,6 +18,11 @@ public class VehicleController {
         this.vehicleService = vehicleService;
     }
 
+    /**
+     *
+     * @param vehicleDto
+     * @return
+     */
     @PostMapping("/add")
     public ResponseEntity<ResponseDto> createVehicle(@RequestBody VehicleDto vehicleDto){
         ResponseDto current = vehicleService.createVehicle(vehicleDto);
@@ -25,24 +30,44 @@ public class VehicleController {
 
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @GetMapping("/get/{id}")
     public ResponseEntity<ResponseDto> getVehicle(@PathVariable("id") int id){
         ResponseDto current = vehicleService.accessVehicle(id);
         return new ResponseEntity<>(current,HttpStatus.OK);
     }
 
+    /**
+     *
+     * @param vehicleDto
+     * @return
+     */
     @PutMapping("/change")
     public ResponseEntity<ResponseDto> modifyVehicle(@RequestBody VehicleDto vehicleDto){
         ResponseDto current = vehicleService.upgradeVehicle(vehicleDto);
         return new ResponseEntity<>(current,HttpStatus.OK);
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @DeleteMapping("/remove/{id}")
     public ResponseEntity<ResponseDto> eraseVehicle(@PathVariable("id") int id){
         ResponseDto responseDto = vehicleService.removeVehicle(id);
         return new ResponseEntity<>(responseDto,HttpStatus.OK);
     }
 
+    /**
+     *
+     * @param condition
+     * @return
+     */
     @GetMapping("/expense")
     public ResponseEntity<ResponseDto> sortVehicle(@RequestParam String condition){
         ResponseDto current = vehicleService.findVehicleExpense(condition);

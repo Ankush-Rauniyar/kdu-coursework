@@ -13,6 +13,11 @@ public class Mapper {
 
     private static Random random = new Random();
 
+    /**
+     *
+     * @param vehicle
+     * @return
+     */
     public static VehicleDto convertToDto(Vehicle vehicle){
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setModel(vehicle.getModel());
@@ -22,6 +27,11 @@ public class Mapper {
         return vehicleDto;
     }
 
+    /**
+     *
+     * @param vehicleDto
+     * @return
+     */
     public static Vehicle convertToVehicle(VehicleDto vehicleDto){
         Vehicle vehicle = new Vehicle();
         vehicle.setFactoryLocation(vehicleDto.getFactoryLocation());
@@ -31,6 +41,11 @@ public class Mapper {
         return vehicle;
     }
 
+    /**
+     *
+     * @param vehicle
+     * @return
+     */
     public static ResponseDto convertToResponse(Vehicle vehicle){
         ResponseDto responseDto = new ResponseDto();
         responseDto.setId(vehicle.getId());
@@ -38,6 +53,10 @@ public class Mapper {
         return responseDto;
     }
 
+    /**
+     *
+     * @return
+     */
     public static Mapper createMapper() {
         return new Mapper();
     }
