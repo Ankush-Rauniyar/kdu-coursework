@@ -8,8 +8,6 @@ class SpringhandsonthreeApplicationTests {
 
 	@Test
 	void contextLoads() {
-		Logger logger = LoggerFactory.getLogger(SpringhandsonthreeApplicationTests.class);
-		logger.info("SUCCESS");
 	}
 
 }
