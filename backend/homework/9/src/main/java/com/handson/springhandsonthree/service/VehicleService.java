@@ -10,9 +10,12 @@ import com.handson.springhandsonthree.repository.VehicleRepository;
 
 @Service
 public class VehicleService implements VehicleGenericService {
-    @Autowired
     private VehicleRepository vehicleRepository;
 
+    @Autowired
+    public VehicleService(VehicleRepository vehicleRepository){
+        this.vehicleRepository = vehicleRepository;
+    }
     @Override
     public ResponseDto accessVehicle(int id){
         Vehicle vehicle = vehicleRepository.getVehicle(id);
