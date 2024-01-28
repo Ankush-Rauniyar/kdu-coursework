@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 @Repository
 public class LocationRepository {
     private static final String URLAPI = "http://api.positionstack.com/v1/forward?";
-    private static final String APIKEY = "cf9669b518d58227afc584393c776049";
+    private static final String APIKEY = "363daf79764734bc294a671a81b4c65c";
     private final RestTemplate callAPI = new RestTemplate();
     private static final Logger logger = LoggerFactory.getLogger(LocationRepository.class);
 
