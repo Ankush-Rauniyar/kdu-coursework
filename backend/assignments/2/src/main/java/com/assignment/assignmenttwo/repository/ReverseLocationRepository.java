@@ -39,12 +39,11 @@ public class ReverseLocationRepository {
     }
 
     /**
-     *
+     *this method parses the Json respone.
      * @param response
      * @return
      */
     public LocationEntity covertResponsetoLocation(JsonNode response) {
-        logger.info(response.asText());
         try {
             if(response.get("message") != null){
                 throw new InvalidInputProvidedException("Invalid input provided");
@@ -65,15 +64,22 @@ public class ReverseLocationRepository {
         }
     }
 
+    /**
+     * this method checks if the user input is right or wrong
+     * @param lat
+     * @param longi
+     * @return
+     */
     public boolean checkCoordinates(String lat, String longi){
         try{
             Double latitude = Double.parseDouble(lat);
             Double longitude = Double.parseDouble(longi);
             if((latitude <= 90.0 && latitude >= -90.0) && (longitude <= 180.0 && longitude >= -180.0)){
-                return true;
-            }else{
-                return false;
+               return true;
+            }else {
+                throw  new InvalidInputProvidedException("The coordinate value is invalid");
             }
+
         }catch (NumberFormatException e){
             throw new InvalidInputProvidedException("String provided in coordinates");
         }

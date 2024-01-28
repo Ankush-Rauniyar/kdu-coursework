@@ -17,6 +17,11 @@ public class CacheConfiger {
                 .expireAfterAccess(2, TimeUnit.MINUTES);
     }
 
+    /**
+     *
+     * @param caffeine
+     * @return
+     */
     public CacheManager cacheManager(Caffeine<Object,Object> caffeine){
         CaffeineCacheManager cacheManager = new CaffeineCacheManager();
         cacheManager.setCaffeine(caffeine);

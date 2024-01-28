@@ -10,7 +10,7 @@ public class Mapper {
     }
 
     /**
-     *
+     *convert location entity to response for forward geocoding
      * @param location
      * @return
      */
@@ -19,7 +19,7 @@ public class Mapper {
     }
 
     /**
-     *
+     *convert location entity to response for reverse geocoding
      * @param location
      * @return
      */

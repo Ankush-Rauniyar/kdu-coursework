@@ -8,17 +8,33 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
+    /**
+     *
+     * @param locationNotFoundException
+     * @return
+     */
     @ExceptionHandler(value =  LocationNotFoundException.class)
     public ResponseEntity<ErrorDto> handleCustomException(LocationNotFoundException locationNotFoundException){
         ErrorDto errorDto = new ErrorDto(locationNotFoundException.getMessage(),HttpStatus.BAD_REQUEST.value());
         return new ResponseEntity<>(errorDto,HttpStatus.BAD_REQUEST);
     }
+
+    /**
+     *
+     * @param invalidInputProvidedException
+     * @return
+     */
     @ExceptionHandler(value = InvalidInputProvidedException.class)
     public ResponseEntity<ErrorDto> invalidInputExceptionHandling(InvalidInputProvidedException invalidInputProvidedException){
         ErrorDto errorDto = new ErrorDto(invalidInputProvidedException.getMessage(),HttpStatus.EXPECTATION_FAILED.value());
         return new ResponseEntity<>(errorDto,HttpStatus.EXPECTATION_FAILED);
     }
 
+    /**
+     *
+     * @param e
+     * @return
+     */
     @ExceptionHandler(value = Exception.class)
     public ResponseEntity<ErrorDto> genericException(Exception e){
         ErrorDto errorDto = new ErrorDto(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.value());
