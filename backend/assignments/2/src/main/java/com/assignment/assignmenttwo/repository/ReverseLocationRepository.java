@@ -10,10 +10,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.beans.factory.annotation.Value;
 @Repository
 public class ReverseLocationRepository {
+    @Value("${api-key}")
+    private String apiKey;
     private static final String URLAPI = "http://api.positionstack.com/v1/reverse";
-    private static final String APIKEY = "363daf79764734bc294a671a81b4c65c";
     private final RestTemplate restTemplate = new RestTemplate();
 
     private static final Logger logger = LoggerFactory.getLogger(ReverseLocationRepository.class);
@@ -27,7 +29,7 @@ public class ReverseLocationRepository {
     @Cacheable(cacheNames = "reverse-geocoding",key="{#latitude,#longitude}")
     public LocationEntity getAddressLabel(String latitude, String longitude){
         if(checkCoordinates(latitude,longitude)){
-            String url = URLAPI + "?access_key=" + APIKEY + "&query=" + latitude + "," + longitude;
+            String url = URLAPI + "?access_key=" + apiKey + "&query=" + latitude + "," + longitude;
             JsonNode response = restTemplate.getForObject(url, JsonNode.class);
             if (response == null) {
                 throw new LocationNotFoundException("Error while fetching location in reverse geocoding");

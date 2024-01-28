@@ -9,11 +9,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.beans.factory.annotation.Value;
 
 @Repository
 public class LocationRepository {
+    @Value("${api-key}")
+    private String apiKey;
     private static final String URLAPI = "http://api.positionstack.com/v1/forward?";
-    private static final String APIKEY = "363daf79764734bc294a671a81b4c65c";
     private final RestTemplate callAPI = new RestTemplate();
     private static final Logger logger = LoggerFactory.getLogger(LocationRepository.class);
 
@@ -24,7 +26,7 @@ public class LocationRepository {
      */
     @Cacheable(cacheNames = "geocoding", key = "#address", unless = "#address.toLowerCase().contains('goa')")
     public LocationEntity getCoordinates(String address){
-        String url = URLAPI +"access_key="+APIKEY+"&query="+address;
+        String url = URLAPI +"access_key="+apiKey+"&query="+address;
         JsonNode apiResponse = callAPI.getForObject(url,JsonNode.class);
         if(apiResponse == null){
             throw new LocationNotFoundException("The api response is null. Could not fetch the location");
