@@ -1,0 +1,27 @@
+package com.assignment.assignmenttwo.exceptions;
+
+import com.assignment.assignmenttwo.dto.ErrorDto;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+public class GlobalExceptionHandler {
+    @ExceptionHandler(value =  LocationNotFoundException.class)
+    public ResponseEntity<ErrorDto> handleCustomException(LocationNotFoundException locationNotFoundException){
+        ErrorDto errorDto = new ErrorDto(locationNotFoundException.getMessage(),HttpStatus.BAD_REQUEST.value());
+        return new ResponseEntity<>(errorDto,HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(value = InvalidInputProvidedException.class)
+    public ResponseEntity<ErrorDto> invalidInputExceptionHandling(InvalidInputProvidedException invalidInputProvidedException){
+        ErrorDto errorDto = new ErrorDto(invalidInputProvidedException.getMessage(),HttpStatus.EXPECTATION_FAILED.value());
+        return new ResponseEntity<>(errorDto,HttpStatus.EXPECTATION_FAILED);
+    }
+
+    @ExceptionHandler(value = Exception.class)
+    public ResponseEntity<ErrorDto> genericException(Exception e){
+        ErrorDto errorDto = new ErrorDto(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.value());
+        return new ResponseEntity<>(errorDto,HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
