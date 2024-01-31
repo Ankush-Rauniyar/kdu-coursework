@@ -17,8 +17,14 @@ import java.util.List;
 @Component
 public class PersonUserDetails implements UserDetailsService {
 
-    @Autowired
+
     PersonService personService;
+
+    @Autowired
+    public PersonUserDetails(PersonService personService){
+        this.personService = personService;
+    }
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -38,9 +44,3 @@ public class PersonUserDetails implements UserDetailsService {
         return new User(personUserName, personPassword, authorities);
     }
 }
-
-// write, read, read-only, push, pull
-
-// admin, user
-
-// kdu-admin

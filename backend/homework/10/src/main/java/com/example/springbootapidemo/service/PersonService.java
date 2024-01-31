@@ -8,8 +8,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class PersonService {
 
+
+    private UserDAO personDAO;
+
     @Autowired
-    UserDAO personDAO;
+    public PersonService(UserDAO userDAO){
+        this.personDAO = userDAO;
+    }
 
     public void addPerson(Person person){
         personDAO.addPerson(person);

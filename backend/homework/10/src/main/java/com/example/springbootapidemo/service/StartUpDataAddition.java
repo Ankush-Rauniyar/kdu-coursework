@@ -10,11 +10,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class StartUpDataAddition implements CommandLineRunner {
 
-    @Autowired
+
     UserDAO personDAO;
 
-    @Autowired
+
     PasswordEncoder passwordEncoder;
+
+    @Autowired
+    public StartUpDataAddition(UserDAO userDAO,PasswordEncoder passwordEncoder){
+        this.personDAO = userDAO;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public void run(String... args) throws Exception {
