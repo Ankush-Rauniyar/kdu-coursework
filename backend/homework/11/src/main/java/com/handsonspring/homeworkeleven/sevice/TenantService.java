@@ -20,6 +20,11 @@ public class TenantService {
         this.tenantRepository = tenantRepository;
     }
 
+    /**
+     *
+     * @param tenantDto
+     * @return
+     */
     public ResponseDto addOnlyTenant(TenantDto tenantDto){
         Tenant tenant = Mapper.convertToTenant(tenantDto);
         String id = tenantRepository.addTenant(tenant.getName(),tenant.getEmail());
@@ -28,6 +33,12 @@ public class TenantService {
         responseDto.addItem("TenantId" + id);
         return responseDto;
     }
+
+    /**
+     *
+     * @param allresourcesTenantDto
+     * @return
+     */
 
     public ResponseDto addOtherItems(AllresourcesTenantDto allresourcesTenantDto){
         ResponseDto responseDto = new ResponseDto();
@@ -58,11 +69,32 @@ public class TenantService {
         return responseDto;
     }
 
+    /**
+     *
+     * @param updateDto
+     * @return
+     */
+
     public ResponseDto updateItem(UpdateDto updateDto){
         String id = tenantRepository.updateUser(updateDto.getUserName(), updateDto.getTenantId());
         ResponseDto responseDto = new ResponseDto();
         responseDto.addItem("TenantId" + updateDto.getTenantId());
         responseDto.addItem("UserId :"+ id);
+        return responseDto;
+    }
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public ResponseDto getTenant(String id){
+        ResponseDto responseDto = new ResponseDto();
+        ShiftTypes shiftTypes = new ShiftTypes();
+        shiftTypes = tenantRepository.getShift( id);
+        responseDto.addItem(shiftTypes.getShiftTypeId());
+        responseDto.addItem(shiftTypes.getShiftTypeName());
+        responseDto.addItem(shiftTypes.getDescripton());
         return responseDto;
     }
 }

@@ -1,13 +1,14 @@
 package com.handsonspring.homeworkeleven.dao;
 
 import com.handsonspring.homeworkeleven.entity.Shift;
+import com.handsonspring.homeworkeleven.entity.ShiftTypes;
 import com.handsonspring.homeworkeleven.entity.Users;
 import com.handsonspring.homeworkeleven.exceptions.ErrorWhileExecutingQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.time.format.DateTimeFormatter;
+
 import java.util.UUID;
 
 @Repository
@@ -29,6 +30,14 @@ public class TenantRepository {
         }
     }
 
+    /**
+     *
+     * @param shiftTypeName
+     * @param description
+     * @param tenantId
+     * @return
+     */
+
     public String addShiftType(String shiftTypeName,String description,String tenantId){
         try {
             String sql = "INSERT INTO shift_types(uq_name,description,tenant_id) values (?,?,?)";
@@ -42,6 +51,14 @@ public class TenantRepository {
         }
     }
 
+    /**
+     *
+     * @param shift
+     * @param tenantId
+     * @param shiftTypeId
+     * @return
+     */
+
     public String addShift(Shift shift,String tenantId,String shiftTypeId){
         try {
             String sql = "INSERT INTO shifts(shift_type_id,name,date_start,date_end,time_start,time_end,tenant_id) values(?,?,?,?,?,?,?)";
@@ -51,14 +68,19 @@ public class TenantRepository {
 
             jdbcTemplate.update(sql, shiftTypeUUID, shift.getShiftName(), shift.getDateStart(), shift.getDateEnd(), shift.getTimeStart(), shift.getTimeEnd(), tenantUUID);
 
-            //jdbcTemplate.update(sql,shiftTypeUUID,shift.getShiftName(),sqlDateStart,sqlDateEnd,sqlTimeStart,sqlTimeEnd,tenantUUID);
-            //jdbcTemplate.update(sql,shiftTypeUUID,shift.getShiftName(),sqlDateStart,sqlDateEnd,formattedTime,sqlTimeEnd,tenantUUID);
             String selectSql = "SELECT id from shifts where shift_type_id = ? and tenant_id = ?";
             return jdbcTemplate.queryForObject(selectSql, new Object[]{shiftTypeUUID, tenantUUID}, String.class);
         }catch(Exception e){
             throw new ErrorWhileExecutingQuery("error while inserting into shift");
         }
     }
+
+    /**
+     *
+     * @param users
+     * @param tenantId
+     * @return
+     */
 
     public String addUsers(Users users,String tenantId){
         try {
@@ -74,6 +96,13 @@ public class TenantRepository {
         }
     }
 
+    /**
+     *
+     * @param shiftId
+     * @param userId
+     * @param tenantId
+     * @return
+     */
     public String addshiftUser(String shiftId,String userId,String tenantId){
         try {
             String sql = "INSERT INTO shift_user(shift_id,user_id,tenant_id) values (?,?,?)";
@@ -89,6 +118,13 @@ public class TenantRepository {
         }
     }
 
+    /**
+     *
+     * @param username
+     * @param tenantId
+     * @return
+     */
+
     public String updateUser(String username,String tenantId){
         try {
             String sql = "UPDATE users set username = ? where tenant_id = ?";
@@ -99,6 +135,20 @@ public class TenantRepository {
             return jdbcTemplate.queryForObject(selectSql, new Object[]{selectSql, username, tenantIdUUID}, String.class);
         }catch (Exception e){
             throw new ErrorWhileExecutingQuery("error while updating user");
+        }
+    }
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public ShiftTypes getShift(String id){
+        try{
+            String sql ="SELECT description from shift_types where id = '?'";
+            return jdbcTemplate.queryForObject(sql,new Object[]{UUID.fromString(id)}, ShiftTypes.class);
+        }catch (Exception e){
+            throw new ErrorWhileExecutingQuery("error while getting shift_types");
         }
     }
 }
