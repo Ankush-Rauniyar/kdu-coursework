@@ -11,5 +11,5 @@ import org.springframework.http.HttpStatus;
 public class RegisterDeviceResponseDto {
     private String message ="Device registered successully";
     private String object;
-    private HttpStatus httpStatus = HttpStatus.OK;
+    private HttpStatus httpStatus;
 }

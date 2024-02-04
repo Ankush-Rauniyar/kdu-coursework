@@ -128,7 +128,7 @@ public class HouseService {
             current.setAddress(newAddress);
             houseRepository.save(current);
             HouseUpdateResponseDto houseUpdateResponseDto = new HouseUpdateResponseDto();
-            houseUpdateResponseDto.setHouseName(current.getHouseName());
+            houseUpdateResponseDto.setHouses(current.getHouseName());
             return houseUpdateResponseDto;
         }else{
             throw new ErrorWhileExecutingQuery("House Not Found");
@@ -141,7 +141,7 @@ public class HouseService {
             if (house.isPresent()) {
                 HouseDetailsResponseDto houseDetailsResponseDto = new HouseDetailsResponseDto();
                 House current = house.get();
-                DeviceAndRooms deviceAndRooms = new DeviceAndRooms();
+                String deviceAndRooms = new String();
                 deviceAndRooms.setHouseId(String.valueOf(current.getId()));
                 deviceAndRooms.setHouseName(current.getHouseName());
                 List<RoomDto> roomDtoList = new ArrayList<>();
@@ -225,7 +225,7 @@ public class HouseService {
                 }
             }
         }
-            throw new ErrorWhileExecutingQuery("Could not find the resource");
+            throw new DeviceNotFoundException("Could not find the resource");
     }
 
 

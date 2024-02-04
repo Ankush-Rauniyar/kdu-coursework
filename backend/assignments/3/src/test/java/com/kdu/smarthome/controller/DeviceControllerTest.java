@@ -195,10 +195,10 @@ public class DeviceControllerTest {
 
             // Read room id from testSuiteData
             List<Map<String, Object>> rooms = (List<Map<String, Object>>) houseData.get("rooms");
-            Integer roomId = (Integer) (rooms.get(0)).get("id");
+            String roomId = (String) (rooms.get(0)).get("id");
 
             mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/device/add")
-                            .content(buildAddDeviceRequest(houseId, roomId.toString(), kickstoneId))
+                            .content(buildAddDeviceRequest(houseId, roomId, kickstoneId))
                             // Add the Authorization header with the user token
                             .header("Authorization", "Bearer " + userToken)
                             .contentType(MediaType.APPLICATION_JSON))
@@ -258,10 +258,10 @@ public class DeviceControllerTest {
             Map<String, Object> registeredHousesMap = (Map<String, Object>) TestSuiteDataManager.readData("registeredHouses");
             Map<String, Object> houseData = (Map<String, Object>) registeredHousesMap.get(username);
             List<Map<String, Object>> rooms = (List<Map<String, Object>>) houseData.get("rooms");
-            Integer roomId = (Integer) (rooms.get(0)).get("id");
+            String roomId =(String) (rooms.get(0)).get("id");
 
             mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/device/add")
-                            .content(buildAddDeviceRequest("invalidHouseId", roomId.toString(), kickstoneId))
+                            .content(buildAddDeviceRequest("invalidHouseId", roomId, kickstoneId))
                             // Add the Authorization header with the user token
                             .header("Authorization", "Bearer " + userToken)
                             .contentType(MediaType.APPLICATION_JSON))
@@ -342,10 +342,10 @@ public class DeviceControllerTest {
 
             // Read room id from testSuiteData
             List<Map<String, Object>> rooms = (List<Map<String, Object>>) houseData.get("rooms");
-            Integer roomId = (Integer) (rooms.get(0)).get("id");
+            String roomId = (String) (rooms.get(0)).get("id");
 
             mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/device/add")
-                            .content(buildAddDeviceRequest(houseId, roomId.toString(), kickstoneId))
+                            .content(buildAddDeviceRequest(houseId, roomId, kickstoneId))
                             // Add the Authorization header with the user token
                             .header("Authorization", "Bearer " + userToken)
                             .contentType(MediaType.APPLICATION_JSON))
@@ -384,10 +384,10 @@ public class DeviceControllerTest {
 
             // Read room id from testSuiteData
             List<Map<String, Object>> rooms = (List<Map<String, Object>>) houseData.get("rooms");
-            Integer roomId = (Integer) (rooms.get(0)).get("id");
+            String roomId = (String) (rooms.get(0)).get("id");
 
             mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/device/add")
-                            .content(buildAddDeviceRequest(houseId, roomId.toString(), kickstoneId))
+                            .content(buildAddDeviceRequest(houseId, roomId, kickstoneId))
                             // Add the Authorization header with the user token
                             .header("Authorization", "Bearer " + userToken)
                             .contentType(MediaType.APPLICATION_JSON))

@@ -32,8 +32,8 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = {DeviceNotRegisteredException.class})
     public ResponseEntity<ErrorDto> deviceNotRegistered(DeviceNotRegisteredException ex){
-        ErrorDto error = new ErrorDto(ex.getMessage() + "--error while running query", HttpStatus.OK.value());
-        return new ResponseEntity<>(error, HttpStatus.OK);
+        ErrorDto error = new ErrorDto(ex.getMessage() + "--error while running query", HttpStatus.BAD_REQUEST.value());
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(value = {HouseNotFoundException.class})
@@ -48,9 +48,30 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.UNAUTHORIZED);
     }
 
+    @ExceptionHandler(value = {DeviceNotFoundException.class})
+    public ResponseEntity<ErrorDto> deviceNotFound(DeviceNotFoundException ex){
+        ErrorDto error = new ErrorDto(ex.getMessage() + "--error while running query", HttpStatus.BAD_REQUEST.value());
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(value = {PasswordMismatchException.class})
+    public ResponseEntity<ErrorDto> passwordException(PasswordMismatchException ex){
+        ErrorDto error = new ErrorDto(ex.getMessage() + "--error while running query", HttpStatus.UNAUTHORIZED.value());
+        return new ResponseEntity<>(error, HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(value = {NoSuchDevicePresentException.class})
+    public ResponseEntity<ErrorDto> passwordException(NoSuchDevicePresentException ex){
+        ErrorDto error = new ErrorDto(ex.getMessage() + "--error while running query", HttpStatus.BAD_REQUEST.value());
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+
     @ExceptionHandler(value = {Exception.class})
     public ResponseEntity<ErrorDto> AllKindOfExceptions(Exception ex){
         ErrorDto error = new ErrorDto(ex.getMessage() + "Exception Unknown", HttpStatus.BAD_REQUEST.value());
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
+
+
 }

@@ -20,7 +20,7 @@ import java.util.List;
 public class House {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
     private String address;
     private String houseName;
 

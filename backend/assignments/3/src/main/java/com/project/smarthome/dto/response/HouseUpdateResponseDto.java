@@ -10,6 +10,6 @@ import org.springframework.http.HttpStatus;
 @NoArgsConstructor
 public class HouseUpdateResponseDto {
     private String message ="House Address updated successfully";
-    private String houseName;
+    private String houses;
     private HttpStatus httpStatus = HttpStatus.OK;
 }

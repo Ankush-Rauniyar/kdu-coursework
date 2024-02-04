@@ -12,6 +12,6 @@ import org.springframework.http.HttpStatus;
 @NoArgsConstructor
 public class HouseDetailsResponseDto {
     private String message ="Successfully received rooms and device";
-    private DeviceAndRooms roomsAndDevices;
+    private String roomsAndDevices;
     private HttpStatus httpStatus = HttpStatus.OK;
 }

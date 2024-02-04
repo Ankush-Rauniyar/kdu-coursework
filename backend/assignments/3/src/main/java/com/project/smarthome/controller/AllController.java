@@ -68,7 +68,7 @@ public class AllController {
 
     @PutMapping("/api/v1/house")
     public HouseUpdateResponseDto updateHouseAddress(@RequestParam String houseId,@RequestBody NewAddressOfHouseDto newAddressOfHouseDto ){
-        return houseService.updateHouse(houseId,newAddressOfHouseDto.getNewAddress());
+        return houseService.updateHouse(houseId,newAddressOfHouseDto.getAddress());
     }
 
     @GetMapping("/api/v1/house/{houseId}")
@@ -92,9 +92,9 @@ public class AllController {
     }
 
     @PostMapping("/api/v1/device/register")
-    public RegisterDeviceResponseDto registerDevice(@RequestBody RegisterDeviceRequestDto registerDeviceRequestDto,HttpServletRequest httpServletRequest){
-        String token = httpServletRequest.getHeader("Authorization").substring(7);
-        return deviceService.addDevice(registerDeviceRequestDto,token);
+    public RegisterDeviceResponseDto registerDevice(@RequestBody RegisterDeviceRequestDto registerDeviceRequestDto){
+
+        return deviceService.addDevice(registerDeviceRequestDto);
     }
 
     @PostMapping("/api/v1/device/add")

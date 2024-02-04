@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class NewAddressOfHouseDto {
-    private String newAddress;
+    private String address;
 }
