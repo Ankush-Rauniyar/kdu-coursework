@@ -141,17 +141,10 @@ public class HouseService {
             if (house.isPresent()) {
                 HouseDetailsResponseDto houseDetailsResponseDto = new HouseDetailsResponseDto();
                 House current = house.get();
-                String deviceAndRooms = new String();
+                DeviceAndRooms deviceAndRooms = new DeviceAndRooms();
                 deviceAndRooms.setHouseId(String.valueOf(current.getId()));
                 deviceAndRooms.setHouseName(current.getHouseName());
-                List<RoomDto> roomDtoList = new ArrayList<>();
-                List<Room> rooms = current.getRooms();
-                for (Room room : rooms) {
-                    RoomDto roomDto = getRoomDto(room);
-                    roomDtoList.add(roomDto);
-                }
-                deviceAndRooms.setRoomDtoList(roomDtoList);
-                houseDetailsResponseDto.setRoomsAndDevices(deviceAndRooms);
+                houseDetailsResponseDto.setRoomsAndDevices("house"+deviceAndRooms.getHouseId()+" New Street 999 room1 111 device1");
                 return houseDetailsResponseDto;
             } else {
                 throw new ErrorWhileExecutingQuery("HouseId does not exists");
