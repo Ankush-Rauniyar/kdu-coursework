@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserAddToHouseRequestDto {
-    private String name;
+    private String username;
 }

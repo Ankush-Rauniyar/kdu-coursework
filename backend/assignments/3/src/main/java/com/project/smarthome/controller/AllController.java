@@ -52,7 +52,13 @@ public class AllController {
     @PostMapping("/api/v1/house/{houseId}/add-user")
     public UserAddedToHouseResponseDto addUserToHouse(@PathVariable String houseId,@RequestBody UserAddToHouseRequestDto userAddToHouseRequestDto,HttpServletRequest httpServletRequest){
         String token = httpServletRequest.getHeader("Authorization").substring(7);
-        return houseService.addUsertoHouse(Integer.valueOf(houseId),userAddToHouseRequestDto.getName(),token);
+        try{
+            Integer i = Integer.parseInt(houseId);
+        }
+        catch(RuntimeException e){
+            throw new RuntimeException(e.getMessage());
+        }
+        return houseService.addUsertoHouse(Integer.parseInt(houseId),userAddToHouseRequestDto.getUsername(),token);
     }
 
     @GetMapping("/api/v1/house")

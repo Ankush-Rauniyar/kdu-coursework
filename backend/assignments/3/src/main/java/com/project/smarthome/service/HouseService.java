@@ -1,8 +1,5 @@
 package com.project.smarthome.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.project.smarthome.dao.DeviceRepository;
 import com.project.smarthome.dao.HouseRepository;
 import com.project.smarthome.dao.RoomRepository;
@@ -22,7 +19,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import java.net.UnknownServiceException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -77,7 +73,7 @@ public class HouseService {
                 Optional<Users> addingUser = usersRepository.findByUsername(username);
                 if (admin.isPresent()) {
                     Users addUser = addingUser.get();
-                    Optional<House> house = houseRepository.findById(String.valueOf(houseId));
+                    Optional<House> house = houseRepository.findById(houseId);
                     if (house.isPresent()) {
                         House currentHouse = house.get();
                         for(Users users: currentHouse.getUsersList()){
@@ -126,7 +122,7 @@ public class HouseService {
     }
 
     public HouseUpdateResponseDto updateHouse(String houseId,String newAddress){
-        Optional<House> house = houseRepository.findById(houseId);
+        Optional<House> house = houseRepository.findById(Integer.parseInt(houseId));
         if(house.isPresent()){
             House current = house.get();
             current.setAddress(newAddress);
@@ -141,7 +137,7 @@ public class HouseService {
 
     public HouseDetailsResponseDto getRoomsAndDevices(String houseId){
         try {
-            Optional<House> house = houseRepository.findById(houseId);
+            Optional<House> house = houseRepository.findById(Integer.parseInt(houseId));
             if (house.isPresent()) {
                 HouseDetailsResponseDto houseDetailsResponseDto = new HouseDetailsResponseDto();
                 House current = house.get();
@@ -182,7 +178,7 @@ public class HouseService {
 
     public RoomAddedResponseDto addRoom(String houseId,String roomName){
         try {
-            Optional<House> house = houseRepository.findById(houseId);
+            Optional<House> house = houseRepository.findById(Integer.parseInt(houseId));
             if (house.isPresent()) {
                 RoomAddedResponseDto roomAddedResponseDto = new RoomAddedResponseDto();
                 House current = house.get();
