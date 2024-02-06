@@ -1,0 +1,107 @@
+.superheros,
+.container{
+    margin: 20px;
+    border-style: solid dotted dashed solid;
+    border-color: black blue;
+    border-width: 7px 10px;
+    border-radius: 7px;
+    padding: 30px 15px;
+    position: relative;
+    width: 400px;
+    height: 500px;
+    top: 50px;
+    left:100px;
+}
+
+.batman{
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    color: red;
+    width: 300px;
+    height: 400px;
+    z-index: 0;
+}
+
+.superman{
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    color: blue;
+    width: 300px;
+    height: 400px;
+}
+
+.superman:hover{
+    /* opacity: 0; */
+    z-index: -1;
+}
+
+.box1,
+#box2,
+.box3,
+#box4{
+    padding: 25px;
+    border-style: groove dashed solid dotted;
+    border-width: 3px;
+    border-color: red green;
+    margin: 25px;
+    background-color: burlywood;
+}
+.container{
+    height: 800px;
+    box-sizing: border-box;
+}
+.box1{
+    position: static;
+}
+
+#box2{
+    position: relative;
+    top:10px;
+    left:15px;
+}
+
+.box3{
+    position: absolute;
+    bottom: 30px;
+    right: 50px;
+}
+
+#box4{
+    position: sticky;
+    top: 20px;
+
+}
+
+h1{
+    background-color: cadetblue;
+}
+
+.container::first-line{
+    display: inline;
+    background-color: aquamarine;
+    font-size: larger;
+    font-weight: bold;
+}
+
+#ancestor > input{
+    background-color: chartreuse;
+}
+
+#ancestor  input{
+    font-size: large;
+    font-weight: bolder;
+    color: azure;
+}
+
+p + h1 {
+    background-color: black;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+p ~ a{
+    background-color: blueviolet;
+    color: aliceblue;
+}
