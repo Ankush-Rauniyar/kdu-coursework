@@ -6,7 +6,6 @@ const server = http.createServer((req, res) => {
 
         const fileName = 'jsonStorage.json';
 
-        // Read the JSON file
         fs.readFile(fileName, 'utf8', (err, data) => {
             if (err) {
                 res.writeHead(500, { 'Content-Type': 'text/plain' });

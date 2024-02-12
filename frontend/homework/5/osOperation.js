@@ -1,7 +1,7 @@
 const os = require('os');
 const fs = require('fs');
 class Details{
-    constructor(hostname,operatingSystem,architecture,release,uptime,numberOfCPUCores,totalMemory,freeMemory,currentDirectory){
+    constructor(hostname,operatingSystem,architecture,release,uptime,numberOfCPUCores,totalMemory){
         this.hostname = hostname;
         this.operatingSystem = operatingSystem;
         this.architecture = architecture;
@@ -9,13 +9,15 @@ class Details{
         this.uptime = uptime;
         this.numberOfCPUCores = numberOfCPUCores;
         this.totalMemory = totalMemory;
+    }
+    setFreeMemoryAndCurrentDirectory(freeMemory,currentDirectory){
         this.freeMemory = freeMemory;
         this.currentDirectory = currentDirectory;
     }
 }
 
-// console.log(os.hostname());
-let current = new Details(os.hostname(),os.platform(),os.arch(),os.release(),os.uptime(),os.cpus.length,os.totalmem(),os.freemem(),process.cwd());
+let current = new Details(os.hostname(),os.platform(),os.arch(),os.release(),os.uptime(),os.cpus.length,os.totalmem())
+current.setFreeMemoryAndCurrentDirectory(os.freemem(),process.cwd());
 let jsonFormat = JSON.stringify(current);
 console.log(jsonFormat);
 

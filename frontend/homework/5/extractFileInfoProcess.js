@@ -7,6 +7,9 @@ class Details{
         this.baseName = baseName;
         this.directory = directory;
     }
+    getDirectory(){
+        return this.directory;
+    }
 }
 
 function extractFileInfo(currentPath){
