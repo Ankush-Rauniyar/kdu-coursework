@@ -1,0 +1,105 @@
+* {
+  padding: 0;
+  margin: 0;
+  .main-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    .head-container {
+      text-align: center;
+      font-size: 27px;
+      padding: 10px;
+      margin: 10px;
+    }
+
+    .actual-container{
+        #display-container{
+            width:100vw;
+            height: 80vh;
+            background-color: #7FC7D9;
+            overflow: auto;
+
+            .msg{
+                display: flex;
+
+                .user1{
+                    padding:5px;
+                    margin:1rem;
+                    border:solid black 1px;
+                    background-color: red;
+                    color: white;
+                    border-radius: 50%;
+                    width:40px;
+                    height: 40px;
+                    text-align: center;
+                    font-size: 30px;
+                }
+                .user2{
+                    padding:5px;
+                    margin:1rem;
+                    border:solid black 1px;
+                    background-color: green;
+                    color: white;
+                    border-radius: 50%;
+                    width:40px;
+                    height: 40px;
+                    text-align: center;
+                    font-size: 30px;
+                }
+
+                .chat{
+                    display: flex;
+                    background-color: #cddcff;
+                    border: solid 1px #8c919c;
+                    border-radius: 6px;
+                    padding:1rem;
+                    width: fit-content;
+                    height: fit-content;
+                    margin-top:1rem;
+                    margin-bottom: 2rem;
+                }
+            }
+        }
+
+        .input-container{
+            display: flex;
+            position: sticky;
+            bottom: 15px;
+
+            .message-box{
+                padding-left: 3px;
+                #inputBox{
+                    font-size: 23px;
+                    width: 99vw;
+                    height: 10vh;
+
+                }
+
+            }
+
+            .sending-button{
+                height:10vh;
+                position: absolute;
+                right: 10px;
+                display: flex;
+                flex: 1;
+                justify-content: center;
+                align-items: center;
+                #send{
+                    width:5vw;
+                    height: 10vh;   
+                }
+
+                #send:hover{
+                    background-color: green;
+
+                    i{
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+  }
+}
