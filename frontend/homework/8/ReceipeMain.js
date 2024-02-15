@@ -63,6 +63,7 @@ function fetchRecipesFromAPI() {
                 };
                 recipeRepository_1.recipes.addReceipe(nowItem);
             });
+            console.log('fetched all data and recipes successfully');
         }
         catch (error) {
             console.error('Error fetching recipes:', error);
@@ -81,11 +82,11 @@ function searchRecipes(query) {
         }
     });
 }
-fetchRecipesFromAPI();
-setTimeout(() => {
-    console.log('\n\npizza recipes\n');
-    searchRecipes('pizza');
-}, 1000);
+// fetchRecipesFromAPI();
+// setTimeout(()=>{
+//     console.log('\n\npizza recipes\n');
+//     searchRecipes('pizza');
+// },1000);
 function printAllRecipes() {
     return __awaiter(this, void 0, void 0, function* () {
         yield fetchRecipesFromAPI();
