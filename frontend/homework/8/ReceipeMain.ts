@@ -7,7 +7,7 @@ import { IRecipe } from "./dto/ReicpeDto";
 let app = express();
 app.use(express.json());
 
-const PORT:number | string = process.env.PORT ?? 4000;
+const PORT:number | string = process.env.PORT ?? 4500;
 
 app.listen(PORT,()=>{
     console.log(`listening to PORT: ${PORT}`);
@@ -78,11 +78,11 @@ async function searchRecipes(query:string){
     }
 }
 
-// fetchRecipesFromAPI();
-// setTimeout(()=>{
-//     console.log('\n\npizza recipes\n');
-//     searchRecipes('pizza');
-// },1000);
+fetchRecipesFromAPI();
+setTimeout(()=>{
+    console.log('\n\npizza recipes\n');
+    searchRecipes('pizza');
+},1000);
 
 async function printAllRecipes() {
     await fetchRecipesFromAPI();

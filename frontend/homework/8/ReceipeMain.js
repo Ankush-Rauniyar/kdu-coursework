@@ -15,7 +15,7 @@ const express = require('express');
 const recipeRepository_1 = require("./repository/recipeRepository");
 let app = express();
 app.use(express.json());
-const PORT = (_a = process.env.PORT) !== null && _a !== void 0 ? _a : 4000;
+const PORT = (_a = process.env.PORT) !== null && _a !== void 0 ? _a : 4500;
 app.listen(PORT, () => {
     console.log(`listening to PORT: ${PORT}`);
 });
@@ -82,11 +82,11 @@ function searchRecipes(query) {
         }
     });
 }
-// fetchRecipesFromAPI();
-// setTimeout(()=>{
-//     console.log('\n\npizza recipes\n');
-//     searchRecipes('pizza');
-// },1000);
+fetchRecipesFromAPI();
+setTimeout(() => {
+    console.log('\n\npizza recipes\n');
+    searchRecipes('pizza');
+}, 1000);
 function printAllRecipes() {
     return __awaiter(this, void 0, void 0, function* () {
         yield fetchRecipesFromAPI();
