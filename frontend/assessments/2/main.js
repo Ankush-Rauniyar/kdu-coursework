@@ -44,6 +44,6 @@ server.listen(PORT,()=>{
 const history = [];
 
 function generateRandomValue(){
-    return Math.floor(Math.random()*500) + 1;
+    return Math.floor(Math.random()*605) + 1;
 }
 

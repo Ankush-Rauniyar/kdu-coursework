@@ -13,15 +13,19 @@
         <div id="market">
             <div class="top-container">
                 <div class="first-part">
-                    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/af1307136664867.Y3JvcCw1NzUzLDQ1MDAsNDIsMA.jpg" id="company-image">
-                    <span id="name-company">Zomato</span>
-                    Price
-                    <span id="current-value">300</span>
+                    <div class="left-part">
+                        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/af1307136664867.Y3JvcCw1NzUzLDQ1MDAsNDIsMA.jpg" id="company-image" alt="image of logo">
+                        <span id="name-company">Zomato</span>
+                    </div>
+                    <div class="price">
+                        Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span id="current-value">0</span>
+                    </div>
                 </div>
                 <div class="second-part">
-                    <input type="text" id="quantity" placeholder="Enter QTY">
-                    <button id="buy">BUY</button>
-                    <button id="sell">SELL</button>
+                    <input type="text" id="quantity" placeholder="Enter QTY" tabindex="1">
+                    <button id="buy" tabindex="2">BUY</button>
+                    <button id="sell" tabindex="3">SELL</button>
                 </div>
 
             </div>
@@ -41,8 +45,6 @@
     ></script>
     <script>
         const socket = io("http://localhost:4000");
-
-
         const buy = document.getElementById('buy');
         const sell = document.getElementById('sell');
         const quantity = document.getElementById('quantity');
@@ -53,28 +55,82 @@
 
         buy.addEventListener('click',()=>{
             const amount = quantity.value;
+            if(amount == ''){
+                return;
+            }
             let date = new Date();
 
+            const each = document.createElement('div');
+            each.classList.add('each');
 
-            const transaction = document.createElement('p');
-            transaction.innerText = parseInt(amount) + 'stocks\n Price :'+parseInt(currentPrice.value) +' '+ date;
+            const left = document.createElement('div');
+            left.classList.add('left');
 
+            const up = document.createElement('div');
+            up.classList.add('up');
+            up.innerText = parseInt(amount) + '   stocks';
 
-            history.appendChild(transaction);
+            const down = document.createElement('p');
+            down.innerText = date;
+
+            left.appendChild(up);
+            left.appendChild(down);
+
+            each.appendChild(left);
+
+            const action = document.createElement('div');
+
+            action.classList.add('action');
+            action.innerText='BUY';
+            action.style.color = '#2f9e44';
+
+            each.appendChild(action);
+
+            history.appendChild(each);
 
 
 
             socket.emit('bought',amount,date);
-            amount.value ='';
+            quantity.value ='';
         });
 
         sell.addEventListener('click',()=>{
             const amount = quantity.value;
+            if(amount == ''){
+                return;
+            }
             let date = new Date();
-            const act = 'sell';
+
+            const each = document.createElement('div');
+            each.classList.add('each');
+
+            const left = document.createElement('div');
+            left.classList.add('left');
+
+            const up = document.createElement('div');
+            up.classList.add('up');
+            up.innerText = parseInt(amount) + '  stocks';
+
+            const down = document.createElement('p');
+            down.innerText = date;
+
+            left.appendChild(up);
+            left.appendChild(down);
+
+            each.appendChild(left);
+
+            const action = document.createElement('div');
+
+            action.classList.add('action');
+            action.innerText='SELL';
+            action.style.color = '#e03131';
+
+            each.appendChild(action);
+
+            history.appendChild(each);
 
             socket.emit('sold',amount,date);
-            amount.value ='';
+            quantity.value ='';
         });
 
         socket.on('inital',(packet)=>{
@@ -89,17 +145,19 @@
             let amount = parseInt(packet.value);
             const column = document.createElement('div');
             column.style.width = '20px';
+            column.style.marginRight = '1px';
             console.log(amount);
             column.style.height = `${amount}px`;
             if(parseInt(currentPrice.innerText) < amount){
-                column.style.backgroundColor = 'green';
-                currentPrice.style.color='green';
+                column.style.backgroundColor = '#b2f2bb';
+                currentPrice.style.color='#2f9e44';
+                column.style.border = 'solid #2f9e44 1px'
             }else{
-                column.style.backgroundColor = 'red';
-                currentPrice.style.color='red';
+                column.style.backgroundColor = '#ffc9c9';
+                column.style.border = 'solid #e03131 1px'
+                currentPrice.style.color='#e03131';
             }
             currentPrice.innerHTML = amount.toString();
-            column.style.border = 'solid black 1px'
             const show = document.getElementById('bottom-container');
             show.appendChild(column);
 
