@@ -1,0 +1,10 @@
+body{
+  background-color: #ffe68c;
+  font-family: "Caveat", cursive;
+  font-style: italic;
+}
+
+.second-container{
+  display: flex;
+  margin-left: 3rem;
+}

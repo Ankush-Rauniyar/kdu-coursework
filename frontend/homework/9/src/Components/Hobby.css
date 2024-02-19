@@ -1,0 +1,22 @@
+.hobby-container{
+    border: 1px solid #eba742;
+    background-color: #a5f0af;
+    margin-left: 5rem;
+    width:45vw;
+    height: 500px;
+    /* font-family:; */
+}
+
+li{
+    list-style: none;
+    
+}
+
+ul{
+    padding-left: 0;
+}
+
+.heading{
+    text-align: center;
+    color: #dd9420;
+}
