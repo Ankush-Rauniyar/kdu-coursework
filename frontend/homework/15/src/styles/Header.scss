@@ -1,0 +1,21 @@
+.head-container{
+    background-color: #28a745;
+    display: flex;
+    justify-content: space-evenly;
+    height: 6rem;
+    
+    h1{
+        font-size: 40px;
+        color: white;
+    }
+    
+    .search-input{
+        margin-top: 1.5rem;
+        width: 30vw;
+        height: 4vh;
+        border-radius: 5px;
+        border: none;
+        font-weight: 500;
+        font-size: 16px;
+    }
+}
