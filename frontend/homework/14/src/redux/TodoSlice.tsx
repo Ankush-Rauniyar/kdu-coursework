@@ -9,12 +9,14 @@ interface TodosState {
   searchTerm: string;
   todos: Todo[];
   filteredTodos: Todo[];
+  removeTodos :number[];
 }
 
 const initialState: TodosState = {
   searchTerm: "",
   todos: [],
   filteredTodos: [],
+  removeTodos:[],
 };
 
 const TodosSlice = createSlice({
@@ -32,8 +34,16 @@ const TodosSlice = createSlice({
       state.searchTerm = action.payload;
       state.filteredTodos = state.todos.filter((todo) => todo.text.includes(state.searchTerm));
     },
+    removeTodosCheckBox : (state ,action : PayloadAction<number>)=>{
+      state.removeTodos.push(action.payload);
+    },
+    deleteSelectedTodos: (state,action:PayloadAction<boolean>) => {
+      state.todos = state.todos.filter((todo) => !state.removeTodos.includes(todo.id));
+      state.filteredTodos = state.filteredTodos.filter((todo) => !state.removeTodos.includes(todo.id));
+      state.removeTodos = [];
+    }
   },
 });
 
-export const { addTodo, deleteTodo, setSearchTerm } = TodosSlice.actions;
+export const { addTodo, deleteTodo, setSearchTerm,removeTodosCheckBox,deleteSelectedTodos} = TodosSlice.actions;
 export default TodosSlice.reducer;

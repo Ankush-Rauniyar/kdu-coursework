@@ -19,7 +19,7 @@ ul{
 .item{
     list-style: none;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     padding: 1rem;
     border-bottom: #e0dede 1px solid;
     font-size: 16px;
@@ -34,6 +34,7 @@ ul{
     border:none;
     font-size: 16px;
     height: 4.5vh;
+    margin-right: 1rem;
 }
 
 .delete-button{
@@ -46,10 +47,22 @@ ul{
     margin-right: 1rem;
 }
 
+.checkbox-input{
+    margin-top: 0;
+    align-self: flex-start;
+}
+
 .item-input{
     width: 12vw;
     height: 4vh;
     margin-right: 1rem;
     border: 1px solid #e0dede ;
     border-radius: 5px;
+}
+
+.inner-item{
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    margin-left:1rem;
 }
