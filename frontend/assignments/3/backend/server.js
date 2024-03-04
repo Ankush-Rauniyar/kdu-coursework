@@ -14,16 +14,13 @@ const io = new socketIo.Server(server, {
 });
 
 io.on("connection", (socket) => {
-    console.log(`connection established: ${socket.id}`);
 
     socket.on("join", (roomName) => {
         socket.join(roomName);
-        console.log(`${socket.id} joined room: ${roomName}`);
     });
 
     socket.on("done", (message,roomName) => {
         message = getRandomName() +" "+ message;
-        console.log(message);
         io.to(roomName).except(socket.id).emit("send", message);
     });
 });

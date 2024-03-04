@@ -23,6 +23,9 @@ const useStyles = createUseStyles({
     border: "3px solid #5b6065",
     borderRadius: "50px",
     justifySelf: "center",
+    "@media (max-width: 750px)": {
+      width: "90vw",
+    },
   },
   dashBoardContent: {
     display: "flex",

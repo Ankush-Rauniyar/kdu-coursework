@@ -19,19 +19,13 @@ const PortfolioState = createSlice({
   initialState,
   reducers: {
     groupAndSortTransactions: (state) => {
-      
       const groupedTransactionsMap = state.allPreviousTransaction.reduce(
         (map, transaction) => {
           if (transaction.timestamp) {
             const date = new Date(transaction.timestamp);
-            const formattedDate = `${date.getFullYear()}-${(
-              date.getMonth() + 1
-            )
+            const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1)
               .toString()
-              .padStart(2, "0")}-${date
-              .getDate()
-              .toString()
-              .padStart(2, "0")}`;
+              .padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
 
             if (!map.has(formattedDate)) {
               map.set(formattedDate, []);
@@ -46,9 +40,7 @@ const PortfolioState = createSlice({
       );
 
       // Convert map values to a flat array and sort by date (descending order)
-      state.allPreviousTransaction = Array.from(
-        groupedTransactionsMap.values()
-      )
+      state.allPreviousTransaction = Array.from(groupedTransactionsMap.values())
         .flat()
         .sort((a, b) => {
           const dateA = new Date(a.timestamp);
