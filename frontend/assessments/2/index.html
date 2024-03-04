@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>stockMarket</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="title-container">KDU Stock Market Dashboard</div>
+      <div id="content-container">
+        <div id="market">
+            <div class="top-container">
+                <div class="first-part">
+                    <div class="left-part">
+                        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/af1307136664867.Y3JvcCw1NzUzLDQ1MDAsNDIsMA.jpg" id="company-image" alt="image of logo">
+                        <span id="name-company">Zomato</span>
+                    </div>
+                    <div class="price">
+                        Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span id="current-value">0</span>
+                    </div>
+                </div>
+                <div class="second-part">
+                    <input type="text" id="quantity" placeholder="Enter QTY" tabindex="1">
+                    <button id="buy" tabindex="2">BUY</button>
+                    <button id="sell" tabindex="3">SELL</button>
+                </div>
+
+            </div>
+            <div id="bottom-container">
+
+            </div>
+        </div>
+        <div id="history">
+            <h1>History</h1>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.socket.io/4.7.4/socket.io.min.js"
+      integrity="sha384-Gr6Lu2Ajx28mzwyVR8CFkULdCU7kMlZ9UthllibdOSo6qAiN+yXNHqtgdTvFXMT4"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+        const socket = io("http://localhost:4000");
+        const buy = document.getElementById('buy');
+        const sell = document.getElementById('sell');
+        const quantity = document.getElementById('quantity');
+        const logo = document.getElementById('company-image');
+        const companyName = document.getElementById('name-company');
+        const currentPrice = document.getElementById('current-value');
+        const history = document.getElementById('history');
+
+        buy.addEventListener('click',()=>{
+            const amount = quantity.value;
+            if(amount == ''){
+                return;
+            }
+            let date = new Date();
+
+            const each = document.createElement('div');
+            each.classList.add('each');
+
+            const left = document.createElement('div');
+            left.classList.add('left');
+
+            const up = document.createElement('div');
+            up.classList.add('up');
+            up.innerText = parseInt(amount) + '   stocks';
+
+            const down = document.createElement('p');
+            down.innerText = date;
+
+            left.appendChild(up);
+            left.appendChild(down);
+
+            each.appendChild(left);
+
+            const action = document.createElement('div');
+
+            action.classList.add('action');
+            action.innerText='BUY';
+            action.style.color = '#2f9e44';
+
+            each.appendChild(action);
+
+            history.appendChild(each);
+
+
+
+            socket.emit('bought',amount,date);
+            quantity.value ='';
+        });
+
+        sell.addEventListener('click',()=>{
+            const amount = quantity.value;
+            if(amount == ''){
+                return;
+            }
+            let date = new Date();
+
+            const each = document.createElement('div');
+            each.classList.add('each');
+
+            const left = document.createElement('div');
+            left.classList.add('left');
+
+            const up = document.createElement('div');
+            up.classList.add('up');
+            up.innerText = parseInt(amount) + '  stocks';
+
+            const down = document.createElement('p');
+            down.innerText = date;
+
+            left.appendChild(up);
+            left.appendChild(down);
+
+            each.appendChild(left);
+
+            const action = document.createElement('div');
+
+            action.classList.add('action');
+            action.innerText='SELL';
+            action.style.color = '#e03131';
+
+            each.appendChild(action);
+
+            history.appendChild(each);
+
+            socket.emit('sold',amount,date);
+            quantity.value ='';
+        });
+
+        socket.on('inital',(packet)=>{
+            logo.src = 'https://mir-s3-cdn-cf.behance.net/projects/404/af1307136664867.Y3JvcCw1NzUzLDQ1MDAsNDIsMA.jpg';
+            console.log(received);
+            companyName.innerText = packet.name;
+            currentPrice.innerText = parseInt(price);
+            console.log(currentPrice.innerText);
+        })
+
+        socket.on('data',(packet)=>{
+            let amount = parseInt(packet.value);
+            const column = document.createElement('div');
+            column.style.width = '20px';
+            column.style.marginRight = '1px';
+            console.log(amount);
+            column.style.height = `${amount}px`;
+            if(parseInt(currentPrice.innerText) < amount){
+                column.style.backgroundColor = '#b2f2bb';
+                currentPrice.style.color='#2f9e44';
+                column.style.border = 'solid #2f9e44 1px'
+            }else{
+                column.style.backgroundColor = '#ffc9c9';
+                column.style.border = 'solid #e03131 1px'
+                currentPrice.style.color='#e03131';
+            }
+            currentPrice.innerHTML = amount.toString();
+            const show = document.getElementById('bottom-container');
+            show.appendChild(column);
+
+        })
+     </script>
+  </body>
+</html>
