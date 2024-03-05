@@ -39,13 +39,12 @@ const PortfolioState = createSlice({
         new Map<string, IStockTransaction[]>()
       );
 
-      // Convert map values to a flat array and sort by date (descending order)
       state.allPreviousTransaction = Array.from(groupedTransactionsMap.values())
         .flat()
         .sort((a, b) => {
           const dateA = new Date(a.timestamp);
           const dateB = new Date(b.timestamp);
-          return dateB.getTime() - dateA.getTime(); // Sort in descending order
+          return dateB.getTime() - dateA.getTime();
         });
     },
   },
@@ -56,7 +55,7 @@ const PortfolioState = createSlice({
     builder.addCase(fetchAllPortfolioFromAPI.fulfilled, (state, action) => {
       state.status = "success";
       state.allPreviousTransaction = action.payload;
-      // Dispatch the new action to group and sort transactions
+
       PortfolioState.caseReducers.groupAndSortTransactions(state);
     });
     builder.addCase(fetchAllPortfolioFromAPI.rejected, (state, action) => {
@@ -66,7 +65,7 @@ const PortfolioState = createSlice({
   },
 });
 
-// Export the action creator for the new action
+
 export const { groupAndSortTransactions } = PortfolioState.actions;
 
 export default PortfolioState.reducer;
