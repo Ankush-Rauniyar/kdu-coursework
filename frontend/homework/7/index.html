@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/2.1.0/uicons-bold-rounded/css/uicons-bold-rounded.css"
+    />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="head-container">KDU CHAT APP</div>
+      <div class="actual-container">
+        <div id="display-container">
+        </div>
+        <div class="input-container">
+          <div class="message-box">
+            <input
+              type="text"
+              placeholder="Write a message here"
+              id="inputBox" tabindex="1"
+            />
+          </div>
+          <div class="sending-button">
+            <button id="send" tabindex="2"><i class="fi fi-br-paper-plane-top"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.socket.io/4.7.4/socket.io.min.js"
+      integrity="sha384-Gr6Lu2Ajx28mzwyVR8CFkULdCU7kMlZ9UthllibdOSo6qAiN+yXNHqtgdTvFXMT4"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const socket = io("http://localhost:3000");
+
+      const inputBox = document.getElementById("inputBox");
+      const button = document.getElementById("send");
+      const displayingDiv = document.getElementById("display-container");
+
+      button.addEventListener("click", () => {
+        let message = inputBox.value;
+        if(message === ''){
+            return;
+        }
+        displayMessage('U',message);
+        console.log(message);
+        socket.emit("sender", message);
+        inputBox.value = '';
+      });
+
+      socket.on("received", (payload) => {
+        displayMessage("O", payload);
+      });
+
+      function displayMessage(from, message) {
+        let current = document.createElement("div");
+        current.classList.add('msg');
+        let firstDiv = document.createElement("div");
+        firstDiv.innerText = from;
+        if(from == 'O'){
+            firstDiv.classList.add('user2');
+        }else{
+            firstDiv.classList.add('user1');
+        }
+
+        current.appendChild(firstDiv);
+
+        let content = document.createElement("p");
+        content.innerText = message;
+        content.classList.add('chat');
+        current.appendChild(content);
+
+        displayingDiv.appendChild(current);
+      }
+    </script>
+  </body>
+</html>
