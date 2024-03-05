@@ -1,0 +1,19 @@
+.name{
+    font-size: 35px;
+    margin-left:4rem;
+    margin-bottom: 0;
+}
+
+.fullName{
+    margin-top: 0.7rem;
+    margin-bottom: 0;
+    font-size:20px;
+    margin-left:4rem;
+}
+
+.qualification{
+    margin-top: 0.7rem;
+    margin-bottom: 0;
+    font-size: 35px;
+    margin-left:4rem;
+}
