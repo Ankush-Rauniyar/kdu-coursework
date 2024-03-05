@@ -6,7 +6,7 @@ import { IStockTransaction } from "../utils/Interfaces";
 import { useStyles } from "./MyPortfolioStyles";
 
 interface GroupedTransactions {
-  [date: string]: IStockTransaction[]; // Assuming Transaction is the type of your transactions
+  [date: string]: IStockTransaction[];
 }
 
 const MyPortfolio: React.FC = () => {
@@ -16,7 +16,6 @@ const MyPortfolio: React.FC = () => {
     const allPreviousTransaction = state.portfolio.allPreviousTransaction;
     const personalTransactions = state.stocks.personalTransactions;
 
-    // Combine both types of transactions
     return [...personalTransactions, ...allPreviousTransaction];
   });
 
