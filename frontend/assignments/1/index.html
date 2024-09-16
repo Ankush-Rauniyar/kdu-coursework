@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="navigation-section">
+            <div class="all-options">
+                <div class="navigation-item"><img src="icons/premium.png"> </div>
+                <div class="navigation-item"><img src ="icons/home.png"> <p>Home</p></div>
+                <div class="navigation-item"><img src="icons/explore.png"> <p>Explore</p></div>
+                <div class="navigation-item"><img src="icons/notifications.png"> <p>Notifications</p></div>
+                <div class="navigation-item"><img src="icons/messages.png" ><p>Messages</p></div>
+                <div class="navigation-item"><img src ="icons/grok.png"> <p>Grok</p></div>
+                <div class="navigation-item"><img src="icons/lists.png" ><p>Lists</p></div>
+                <div class="navigation-item"><img src="icons/bookmarks.png" ><p>Bookmarks</p></div>
+                <div class="navigation-item"><img src="icons/communities.png" ><p>Communities</p></div>
+                <div class="navigation-item"><img src="icons/premium.png" ><p>Premium</p></div>
+                <div class="navigation-item"><img src="icons/profile.png" ><p>Profile</p></div>
+                <div class="navigation-item"><img src="icons/more.png" ><p>More</p></div>
+                <div class="post__button-navigation"><button value="post-pop" id="post__button">Post</button></div>
+                <div class="profile-item">
+                    <div class="first-column">
+                        <img src="icons/profilepicture.png">
+                    </div>
+                    
+                    <div class="profile-name">
+                        <span class="account-name">Nitesh Gupta</span>
+                        <span class="user-name">@nit_hck</span>
+                    </div>
+                    
+                    <div class="extra-column">
+                        <img src="post-elements/options.png">
+                    </div>
+                </div>
+                    
+            </div>
+        </div>
+        <div class="mobile-navigation" id="nav-mob">
+            <div class="first-basic">
+                <div class="upper-basic">
+                    <div class="profile-back">
+                        <button class="profile-icon" onclick="bringAll()"><img src="icons/profilepicture.png"></button>
+                    </div>
+                    <div>
+                        <img src="icons/plus.png" class="pl">
+                    </div>
+                </div>
+                <div class="lower-basic">
+                    Nitesh Gupta<br>
+                    <span class="nav-style">@nit_hck</span>
+                    <br>
+                    <span style="font-size: large;">1</span> <span class="nav-style">Following</span>
+                    &nbsp;
+                    <span style="font-size: large;">0</span> <span class="nav-style">Followers</span>
+                </div>
+            </div>
+            <div class="navigation-item" style="padding-top: 0.5rem;"><img src="icons/profile.png"><p>Profile</p></div>
+            <div class="navigation-item" style="padding-top: 0.5rem;"><img src="icons/premium.png"><p>Premium</p></div>
+            <div class="navigation-item" style="padding-top: 0.5rem;"><img src="icons/lists.png"><p>Lists</p></div>
+            <div class="navigation-item" style="padding-top: 0.5rem;"><img src="icons/bookmarks.png"><p>Bookmarks</p></div>
+            <div class="navigation-item" style="padding-top: 0.5rem;"><img src="icons/communities.png" ><p>Communities</p></div>
+            <div class="navigation-item" style="padding-top: 0.5rem;"><img src="icons/money1.png"><p>Monetization</p></div>
+            <div class="navigation-item" style="padding-top: 0.5rem;"><img src="icons/setting1.png"><p>Settings and privacy</p></div>
+            <div class="navigation-item" style="padding-top: 0.5rem;"><img src="icons/logout1.png"><p>Logout</p></div>
+        </div>
+        <div class="content-posts">
+                <div class="mobile__heading">
+                    <div class="icon">
+                        <button class="profile-icon" onclick="loadnavbar()">
+                            <img src="icons/profilepicture.png">
+                        </button>
+                    </div>
+                    <div class="twitter__logo">
+                        <img src="icons/premium.png">
+                    </div>
+                    <div class="setting">
+                        <img src="post-elements/setting.png"> 
+                    </div>
+            </div>
+            <div class="content-title">
+                <div class="content-title__foryou">For you</div>
+                <div class="content-title__following">Following</div>
+            </div>
+            <div class="tweet-box" id="tweeter">
+                <div class="mobile-buttons" id="buttons-above">
+                    <div class="back-button">
+                        <button id="back" onclick="goBackFunction()">
+                            <img src="post-elements/back.png">
+                        </button>
+                    </div>
+                    <div class="choices">
+                        <span class="draft">
+                            Drafts
+                        </span>
+                        <button class="post-mobile" onclick="posttweet()">
+                            Post
+                        </button>
+                    </div>
+                </div>
+                <div class="optional">
+                    <div class="profile__pic_post">
+                        <img src="icons/profilepicture.png">
+                    </div>
+    
+                    <div class="other-items">
+                        <div class="upper-text">
+                            <textarea placeholder="What is happening?!" class="post-input" rows="5" cols="52"></textarea>
+                        </div>
+                        <div class="icons-tweet">
+                            <div class="list-icons">
+                                <ul>
+                                    <li>
+                                        <input type="file" class="image-input" accept="image/*">
+                                        <label for="image-input" class="image-label">
+                                          <img src="tweet-images/first.png" alt="Add Image">
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="file" class="image-input" accept="image/gif">
+                                        <label for="image-input" class="image-label">
+                                          <img src="tweet-images/second.png" alt="Add Image">
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <img src="tweet-images/third.png">
+                                    </li>
+                                    <li>
+                                        <img src="tweet-images/four.png">
+                                    </li>
+                                    <li>
+                                        <img src="tweet-images/five.png">
+                                    </li>
+                                    <li>
+                                        <img src="tweet-images/six.png">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="post-button">
+                                <button class="tweet-btn" value="post" onclick="posttweet()">Post</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="posts">
+                <ul class="post-list" style="padding-left: 0px;">
+                    <li class="post-item" data-post-id="1">
+                        <div class="profile__pic-post">
+                            <img src="icons/profilepicture.png">
+                        </div>
+
+                        <div class="post-content">
+
+                            <div class="post-written">
+                                <div class="writer-title">
+                                    <span class="account-name">Nitesh Gupta</span>
+                                    <span class="user-name">@nit_hck - 1s</span>
+                                </div>
+                                <div class="actual-content">
+                                    Coffee in hand,bugs beware.Time to crush some code.<span class="hastag">#DeveloperLife
+                                        #Coding
+                                    </span>
+
+                                </div>
+                            </div>
+
+                            <div class="buttons-react">
+                                <button class="comment"><img src="post-elements/comments.png"></button>
+                                <button class="retweet"><img src="post-elements/retweet.png"> </button>
+                                <div class="post-container">
+                                    <button class="like-post" onclick="toggleLike(this)">
+                                      <img src="post-elements/like.png" alt="Like">
+                                    </button>
+                                    <span class="likes-count" style="font-size: 20px;">0</span>
+                                  </div>
+                                <button class="stats"><img src="post-elements/stats.png"></button>
+                                <button class="save"><img src="post-elements/save.png"></button>
+                                
+                            </div>
+                        </div>
+
+                        <div class="third-column">
+                            <div class="options">
+                                <img src="post-elements/options.png">
+                            </div>
+
+                            <div class="upload">
+                                <img src="post-elements/upload.png">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="post-item" data-post-id="2">
+                        <div class="profile__pic-post">
+                            <img src="icons/profilepicture.png">
+                        </div>
+
+                        <div class="post-content">
+
+                            <div class="post-written">
+                                <div class="writer-title">
+                                    <span class="account-name">Nitesh Gupta</span>
+                                    <span class="user-name">@nit_hck - 1s</span>
+                                </div>
+                                <div class="actual-content">
+                                    Coffee in hand,bugs beware.Time to crush some code.<span class="hastag">#DeveloperLife
+                                        #Coding
+                                    </span>
+
+                                </div>
+                            </div>
+
+                            <div class="buttons-react">
+                                <button class="comment"><img src="post-elements/comments.png"></button>
+                                <button class="retweet"><img src="post-elements/retweet.png"> </button>
+                                <div class="post-container">
+                                    <button class="like-post" onclick="toggleLike(this)">
+                                      <img src="post-elements/like.png" alt="Like">
+                                    </button>
+                                    <span class="likes-count" style="font-size: 20px;">0</span>
+                                  </div>
+                                <button class="stats"><img src="post-elements/stats.png"></button>
+                                <button class="save"><img src="post-elements/save.png"></button>
+                                
+                            </div>
+                        </div>
+
+                        <div class="third-column">
+                            <div class="options">
+                                <img src="post-elements/options.png">
+                            </div>
+
+                            <div class="upload">
+                                <img src="post-elements/upload.png">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="post-item" data-post-id="3">
+                        <div class="profile__pic-post">
+                            <img src="icons/profilepicture.png">
+                        </div>
+
+                        <div class="post-content">
+
+                            <div class="post-written">
+                                <div class="writer-title">
+                                    <span class="account-name">Nitesh Gupta</span>
+                                    <span class="user-name">@nit_hck - 1s</span>
+                                </div>
+                                <div class="actual-content">
+                                    Coffee in hand,bugs beware.Time to crush some code.<span class="hastag">#DeveloperLife
+                                        #Coding
+                                    </span>
+
+                                </div>
+                            </div>
+
+                            <div class="buttons-react">
+                                <button class="comment"><img src="post-elements/comments.png"></button>
+                                <button class="retweet"><img src="post-elements/retweet.png"> </button>
+                                <div class="post-container">
+                                    <button class="like-post" onclick="toggleLike(this)">
+                                      <img src="post-elements/like.png" alt="Like">
+                                    </button>
+                                    <span class="likes-count" style="font-size: 20px;">0</span>
+                                  </div>
+                                <button class="stats"><img src="post-elements/stats.png"></button>
+                                <button class="save"><img src="post-elements/save.png"></button>
+                                
+                            </div>
+                        </div>
+
+                        <div class="third-column">
+                            <div class="options">
+                                <img src="post-elements/options.png">
+                            </div>
+
+                            <div class="upload">
+                                <img src="post-elements/upload.png">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="post-item" data-post-id="4">
+                        <div class="profile__pic-post">
+                            <img src="icons/profilepicture.png">
+                        </div>
+
+                        <div class="post-content">
+
+                            <div class="post-written">
+                                <div class="writer-title">
+                                    <span class="account-name">Nitesh Gupta</span>
+                                    <span class="user-name">@nit_hck - 1s</span>
+                                </div>
+                                <div class="actual-content">
+                                    Coffee in hand,bugs beware.Time to crush some code.<span class="hastag">#DeveloperLife
+                                        #Coding
+                                    </span>
+
+                                </div>
+                            </div>
+
+                            <div class="buttons-react">
+                                <button class="comment"><img src="post-elements/comments.png"></button>
+                                <button class="retweet"><img src="post-elements/retweet.png"> </button>
+                                <div class="post-container">
+                                    <button class="like-post" onclick="toggleLike(this)">
+                                      <img src="post-elements/like.png" alt="Like">
+                                    </button>
+                                    <span class="likes-count" style="font-size: 20px;">0</span>
+                                  </div>
+                                <button class="stats"><img src="post-elements/stats.png"></button>
+                                <button class="save"><img src="post-elements/save.png"></button>
+                                
+                            </div>
+                        </div>
+
+                        <div class="third-column">
+                            <div class="options">
+                                <img src="post-elements/options.png">
+                            </div>
+
+                            <div class="upload">
+                                <img src="post-elements/upload.png">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="post-item" data-post-id="5">
+                        <div class="profile__pic-post">
+                            <img src="icons/profilepicture.png">
+                        </div>
+
+                        <div class="post-content">
+
+                            <div class="post-written">
+                                <div class="writer-title">
+                                    <span class="account-name">Nitesh Gupta</span>
+                                    <span class="user-name">@nit_hck - 1s</span>
+                                </div>
+                                <div class="actual-content">
+                                    Coffee in hand,bugs beware.Time to crush some code.<span class="hastag">#DeveloperLife
+                                        #Coding
+                                    </span>
+
+                                </div>
+                            </div>
+
+                            <div class="buttons-react">
+                                <button class="comment"><img src="post-elements/comments.png"></button>
+                                <button class="retweet"><img src="post-elements/retweet.png"> </button>
+                                <div class="post-container">
+                                    <button class="like-post" onclick="toggleLike(this)">
+                                      <img src="post-elements/like.png" alt="Like">
+                                    </button>
+                                    <span class="likes-count" style="font-size: 20px;">0</span>
+                                  </div>
+                                <button class="stats"><img src="post-elements/stats.png"></button>
+                                <button class="save"><img src="post-elements/save.png"></button>
+                                
+                            </div>
+                        </div>
+
+                        <div class="third-column">
+                            <div class="options">
+                                <img src="post-elements/options.png">
+                            </div>
+
+                            <div class="upload">
+                                <img src="post-elements/upload.png">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="post-invoker">
+            <button class="invoke" onclick="bringTweet()">
+                <img src="post-elements/mobile-post.png">
+            </button>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
