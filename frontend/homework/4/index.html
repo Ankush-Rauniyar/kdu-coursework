@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main-container">
+        <input type="text" id="input-box" value="">
+        <button value="add" id ="click-button">Add todo</button>
+        <ul id ="list-main">
+
+        </ul>
+    </div>
+    <script>
+        let field = document.getElementById("input-box");
+        let button = document.getElementById("click-button");
+
+        button.addEventListener("click",addTheItem);
+
+        function addTheItem() {
+            let content = field.value;
+
+
+            if(content === ''){
+                return;
+            }
+
+            let list = document.getElementById("list-main");
+
+            let item = document.createElement("li");
+            item.innerText = content;
+
+            let deleteButton = document.createElement('button'); // Corrected creation of button
+            deleteButton.textContent = 'delete'; // Set the button text
+            deleteButton.id = 'current'; // Set the button id
+
+            deleteButton.addEventListener("click",deleteTheitem);
+            function deleteTheitem(){
+                list.removeChild(item);
+            }
+
+            item.appendChild(deleteButton);
+            list.appendChild(item);
+        }
+        let current = document.getElementById("current");
+        current.addEventListener("click",deleteTodo);
+
+        function deleteTodo(){
+
+        }
+
+
+    </script>
+</body>
+</html>
